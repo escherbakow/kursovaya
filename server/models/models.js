@@ -30,12 +30,13 @@ const Products = sequelize.define('products', {
 
 const Orders = sequelize.define('order', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    totalprice: {type: DataTypes.FLOAT, allowNull: false},
+    totalprice: {type: DataTypes.FLOAT, allowNull: false}
     
 })
 
 const Trashes = sequelize.define('trash', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    totalprice: {type: DataTypes.FLOAT, allowNull: false}
 })
 
 const Reviews = sequelize.define('review', {

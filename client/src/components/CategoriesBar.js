@@ -1,10 +1,24 @@
 import React, { useContext } from 'react';
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
-import { Card, Row, Col } from "react-bootstrap";
+import { Card, Row, Col, Button } from "react-bootstrap";
+import { deleteCategories } from '../http/productsAPI';
 
 const CategoriesBar = observer(() => {
     const { products } = useContext(Context);
+    const { user } = useContext(Context);
+
+    const handleDelete = async (id) => {
+        try {
+            const result = await deleteCategories(id);
+            console.log(result); // Логируем ответ от сервера
+            
+            // Обновляем состояние после удаления
+            products.setCategories(products.categories.filter(category => category.id !== id));
+        } catch (error) {
+            console.error('Failed to delete category:', error);
+        }
+    };
 
     return (
         <Row className="d-flex flex-row">
@@ -29,7 +43,19 @@ const CategoriesBar = observer(() => {
                                 : 'light'
                         }
                     >
-                        {category.name}
+                        <div>{category.name}</div>
+                        {user.isAuth && user.user.role === 'ADMIN' && (
+                        <Button
+                            variant="danger"
+                            size="sm"
+                            onClick={(e) => {
+                                e.stopPropagation(); // Предотвращает срабатывание onClick родительского элемента
+                                handleDelete(category.id);
+                            }}
+                        >
+                            Удалить
+                        </Button>
+                        )}
                     </Card>
                 </Col>
             ))}

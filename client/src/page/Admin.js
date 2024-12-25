@@ -32,6 +32,7 @@ const Admin = () => {
             >
                 Добавить товар
             </Button>
+            
         <CreateAnimals show={animalsVisible}  onHide={() => setAnimalsVisible(false)}/>
         <CreateCategories show={categoriesVisible} onHide={() => setCategoriesVisible(false)}/>
         <CreateProducts show={productsVisible} onHide={() => setProductsVisible(false)}/>

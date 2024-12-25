@@ -62,6 +62,24 @@ class ProductsController {
         return res.json(product)
     }
     
-}
+    async delete(req, res, next) {
+        try {
+            const { id } = req.params; // Извлекаем id из параметров маршрута
+            
+            // Проверяем, существует ли товар с таким id
+            const product = await Products.findOne({ where: { id } });
+            if (!product) {
+                return next(ApiError.badRequest(`Product with id ${id} not found`));
+            }
+    
+            // Удаляем товар
+            await Products.destroy({ where: { id } });
+    
+            return res.json({ message: `Product with id ${id} successfully deleted` });
+        } catch (e) {
+            return next(ApiError.internal(`Failed to delete product: ${e.message}`));
+        }
+    }
 
-module.exports = new ProductsController();
+}
+    module.exports = new ProductsController();

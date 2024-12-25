@@ -5,3 +5,4 @@ export const REGISTRATION_ROUTE = "/registration";
 export const PRODUCTS_ROUTE = "/products";
 export const TRASH_ROUTE = "/trash";
 export const REVIEW_ROUTE = "/reviews";
+export const ORDER_ROUTE = "/orders"

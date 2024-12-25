@@ -1,12 +1,13 @@
 import { Component } from "react"
 import Admin from "./page/Admin"
-import { ADMIN_ROUTE, REGISTRATION_ROUTE, TRASH_ROUTE, LOGIN_ROUTE, PRODUCTS_ROUTE, SHOP_ROUTE, REVIEW_ROUTE } from "./utils/consts"
+import { ADMIN_ROUTE, REGISTRATION_ROUTE, TRASH_ROUTE, LOGIN_ROUTE, PRODUCTS_ROUTE, SHOP_ROUTE, REVIEW_ROUTE, ORDER_ROUTE } from "./utils/consts"
 import Trash from "./page/Trash"
 import Products from "./page/Products"
 import Login from "./page/Auth"
 import Registration from "./page/Auth"
 import Shop from "./page/Shop"
 import Reviews from "./page/Reviews"
+import Orders from "./page/Orders"
 
 
 export const authRoutes = [
@@ -35,6 +36,11 @@ export const publicRoutes = [
     {
         path: REVIEW_ROUTE,  
         Component: Reviews
+    },
+
+    {
+        path: ORDER_ROUTE,  
+        Component: Orders
     },
     
     {
