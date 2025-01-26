@@ -9,6 +9,7 @@ import { observer } from "mobx-react-lite";
 import Container from "react-bootstrap/Container";
 import { useNavigate } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
+import shopLogo from '../assets/pets.png'; // Замените на ваш путь к изображению
 
 const NavBar = observer(() => {
     const { user } = useContext(Context);
@@ -22,8 +23,16 @@ const NavBar = observer(() => {
     return (
         <Navbar style={{ backgroundColor: '#31372b', color: 'white' }}>
             <Container>
-                <Col>
-                    <NavLink style={{ color: 'white', fontWeight: 'bold' }} to={SHOP_ROUTE}>
+                <Col className="d-flex align-items-center">
+                    <img 
+                        src={shopLogo} 
+                        alt="Logo" 
+                        style={{ width: '35px', height: '35px', marginRight: '10px' }} 
+                    />
+                    <NavLink 
+                        style={{ color: 'white', fontWeight: 'bold', fontSize: '20px' }} 
+                        to={SHOP_ROUTE}
+                    >
                         Зоомагазин №1
                     </NavLink>
                 </Col>

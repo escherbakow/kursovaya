@@ -2,14 +2,14 @@ import React, { useContext, useState } from "react";
 import { Button, Container, Row, Col, Card, Modal, Form } from "react-bootstrap";
 import { Context } from "../index";
 import { observer } from "mobx-react-lite";
-import { useNavigate } from "react-router-dom"; // Используем React Router для навигации
+import { useNavigate } from "react-router-dom"; 
 
 
 const Trash = observer(() => {
     const { products } = useContext(Context);
-    console.log("Products in trash:", products); // Лог для отладки
+    console.log("Products in trash:", products); 
 
-    const navigate = useNavigate(); // Для переходов между страницами
+    const navigate = useNavigate(); 
 
     const [showPaymentModal, setShowPaymentModal] = useState(false);
 
@@ -92,9 +92,9 @@ const Trash = observer(() => {
                 date: new Date().toLocaleString(),
             };
     
-            console.log("Order to add:", order); // Лог для отладки
-            products.addOrder(order); // Добавьте лог для проверки
-            console.log("Current orders:", products.orders); // Лог для проверки
+            console.log("Order to add:", order); 
+            products.addOrder(order); 
+            console.log("Current orders:", products.orders); 
     
             products.clearCart();
 
@@ -107,7 +107,7 @@ const Trash = observer(() => {
                 cvc: "",
             });
 
-            // Переход на страницу заказов
+            
             navigate("/orders");
         }
     };
@@ -116,7 +116,7 @@ const Trash = observer(() => {
         return (
             <Container className="mt-5 text-center">
                 <h2 className="mb-4">Ваша корзина пуста</h2>
-                <p>Кажется, вы еще ничего не добавили в корзину.</p>
+                <p>Кажется, Вы еще ничего не добавили в корзину.</p>
                 <Button variant="primary" href="/">
                     Перейти к товарам
                 </Button>
@@ -135,7 +135,7 @@ const Trash = observer(() => {
                                 variant="top"
                                 src={`${process.env.REACT_APP_API_URL}/${product.img}`}
                                 alt={product.name}
-                                style={{ maxHeight: "200px", objectFit: "cover" }}
+                                style={{ width: 150, height: 150, cursor: 'pointer' }} border={"light"}
                             />
                             <Card.Body className="d-flex flex-column">
                                 <Card.Title className="text-center">
